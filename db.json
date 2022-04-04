@@ -1,0 +1,39 @@
+{
+  "feedback": [
+    {
+      "id": 1,
+      "rating": 10,
+      "text": "This is feedback item 1 coming from the backend"
+    },
+    {
+      "text": "I would not reccomend it to anyone",
+      "rating": 3,
+      "id": 2
+    },
+    {
+      "text": "The service was excellent! Reccomended",
+      "rating": 10,
+      "id": 3
+    },
+    {
+      "text": "Eccellente davvero",
+      "rating": 10,
+      "id": 4
+    },
+    {
+      "text": "I would like to go back again tomorrow",
+      "rating": 10,
+      "id": 5
+    },
+    {
+      "text": "Brutal, nos ha encantado",
+      "rating": 10,
+      "id": 6
+    },
+    {
+      "text": "tres sympa, nos volverons",
+      "rating": 10,
+      "id": 7
+    }
+  ]
+}

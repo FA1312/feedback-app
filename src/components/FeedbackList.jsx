@@ -1,19 +1,46 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { useContext } from "react";
 import FeedbackItem from "./FeedbackItem";
-import PropTypes from "prop-types";
+import Spinner from "./shared/Spinner";
+import FeedbackContext from "../context/FeedbackContext";
 
-function FeedbackList({ feedback }) {
-  if (!feedback || feedback.length === 0) {
-    return <p>There are no feedback yet</p>;
+// NOTE: added layout prop for nicer animation
+// https://www.framer.com/docs/animation/#layout-animations
+
+function FeedbackList() {
+  const { feedback, isLoading } = useContext(FeedbackContext);
+
+  if (!isLoading && (!feedback || feedback.length === 0)) {
+    return <p>No Feedback Yet</p>;
   }
-  return (
+
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="feedback-list">
-      {feedback.map((item) => (
-        <FeedbackItem key={item.id} item={item} />
-      ))}
+      <AnimatePresence>
+        {feedback.map((item) => (
+          <motion.div
+            key={item.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            layout
+          >
+            <FeedbackItem key={item.id} item={item} />
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </div>
   );
-}
 
-FeedbackList.propTypes = { feedback: PropTypes.array };
+  // return (
+  //   <div className='feedback-list'>
+  //     {feedback.map((item) => (
+  //       <FeedbackItem key={item.id} item={item} handleDelete={handleDelete} />
+  //     ))}
+  //   </div>
+  // )
+}
 
 export default FeedbackList;
