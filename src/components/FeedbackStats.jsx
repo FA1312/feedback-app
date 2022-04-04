@@ -6,10 +6,9 @@ function FeedbackStats() {
 
   // NOTE: simpler average calculation
   // Calculate ratings avg
-  const average = Math.round(
+  const average = (
     feedback.reduce((acc, { rating }) => acc + rating, 0) / feedback.length
-  );
-
+  ).toFixed(2);
   // average = average.toFixed(1).replace(/[.,]0$/, '')
   // average = Math.round(average)
 
